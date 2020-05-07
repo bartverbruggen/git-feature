@@ -11,7 +11,7 @@ const getReleaseBranches = async () => {
   const { err, stdout, stderr } = await execFile("git", ["ls-remote"]);
 
   if (err !== undefined) {
-    console.log(
+    throw new Error(
       "Could not get remote branches, make sure you git is initialized."
     );
   }
@@ -34,6 +34,13 @@ const getReleaseBranches = async () => {
 const init = async () => {
   try {
     const releaseBranches = await getReleaseBranches();
+
+    if (releaseBranches.length === 0) {
+      throw new Error(
+        "There are no release branches on this repository, create one first."
+      );
+    }
+
     const answers = await inquirer.prompt([
       {
         type: "list",
