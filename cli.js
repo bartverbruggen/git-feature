@@ -69,8 +69,11 @@ const init = async () => {
       "checkout",
       "-b",
       `feature/${answers.name}`,
+      "--no-track",
       `origin/${answers.parent}`,
     ]);
+
+    // await execFile("git", ["checkout", `feature/${answers.name}`]);
   } catch (error) {
     console.log(error);
   }
