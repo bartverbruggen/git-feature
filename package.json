@@ -1,5 +1,9 @@
 {
-  "name": "git-feature",
+  "name": "@bartverbruggen/git-feature",
+  "repository": "git://github.com/bartverbruggen/git-feature.git",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
   "version": "1.0.0",
   "description": "",
   "main": "cli.js",
