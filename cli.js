@@ -32,6 +32,8 @@ const getReleaseBranches = async () => {
 };
 
 const init = async () => {
+  const myArgs = process.argv.slice(2);
+
   try {
     const releaseBranches = await getReleaseBranches();
 
@@ -59,6 +61,7 @@ const init = async () => {
       {
         type: "input",
         name: "name",
+        default: myArgs[0],
         message: `What will be the name of your feature branch ${chalkPipe(
           "yellow"
         )('(don\'t add "feature/")')}`,
